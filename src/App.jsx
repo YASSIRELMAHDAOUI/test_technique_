@@ -4,128 +4,147 @@ export default function App() {
   return (
     <main className="font-sans antialiased bg-white text-gray-900 overflow-x-hidden">
       
-      <section className="relative bg-[#050505] py-24 md:py-32 px-6 md:px-12 overflow-hidden min-h-screen flex flex-col justify-center">
-      
-      {/* --- DÉCORATIONS SVG EN ARRIÈRE-PLAN --- */}
-      <div className="absolute inset-0 w-full h-full pointer-events-none z-0">
-        <svg className="w-full h-full" viewBox="0 0 1920 1080" preserveAspectRatio="none">
-          
-          {/* Ligne rouge décorative (partant du haut) */}
-          <path 
-            d="M -50,150 C 400,150 500,700 800,1080" 
-            stroke="#e03c4f" strokeWidth="1.5" fill="none" 
-          />
-          
-          {/* Contour du téléphone (smartphone) */}
-          <rect 
-            x="1350" y="180" width="320" height="620" rx="50" 
-            stroke="#ffffff" strokeWidth="1.5" fill="none" 
-          />
-          
-          {/* Flèche blanche pointant vers le téléphone */}
-          <polygon 
-            points="1290,490 1350,470 1350,510" 
-            fill="#ffffff" 
-          />
+<section className="relative bg-[#050505] py-16 sm:py-20 md:py-24 lg:py-32 px-4 sm:px-6 md:px-12 overflow-hidden min-h-screen flex flex-col justify-center">
 
-          {/* Ligne rouge en boucle (bas à droite) */}
-          <path 
-            d="M 1600,920 C 1650,850 1750,980 1850,900" 
-            stroke="#e03c4f" strokeWidth="2" fill="none" 
-          />
+    {/* --- DÉCORATIONS SVG EN ARRIÈRE-PLAN (masquées sur mobile / tablette) --- */}
+    <div className="absolute inset-0 w-full h-full pointer-events-none z-0 hidden lg:block">
+        <svg className="w-full h-full" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice">
+
+            {/* Ligne rouge décorative (partant du haut) */}
+            <path
+                d="M -50,150 C 400,150 500,700 800,1080"
+                stroke="#e03c4f"
+                strokeWidth="1.5"
+                fill="none"
+            />
+
+            {/* Contour du téléphone (smartphone) */}
+            <rect
+                x="1350"
+                y="180"
+                width="320"
+                height="620"
+                rx="50"
+                stroke="#ffffff"
+                strokeWidth="1.5"
+                fill="none"
+            />
+
+            {/* Flèche blanche pointant vers le téléphone */}
+            <polygon
+                points="1290,490 1350,470 1350,510"
+                fill="#ffffff"
+            />
+
+            {/* Ligne rouge en boucle (bas à droite) */}
+            <path
+                d="M 1600,920 C 1650,850 1750,980 1850,900"
+                stroke="#e03c4f"
+                strokeWidth="2"
+                fill="none"
+            />
         </svg>
-      </div>
+    </div>
 
 
-      {/* --- CONTENU TEXTE PRINCIPAL --- */}
-      <div className="relative z-10 max-w-7xl w-full mx-auto flex flex-col">
-        
+    {/* --- CONTENU TEXTE PRINCIPAL --- */}
+    <div className="relative z-10 max-w-7xl w-full mx-auto flex flex-col">
+
         {/* Titres et Textes */}
-        <div className="w-2xl">
-          <h1 className="text-3xl md:text-5xl lg:text-[54px] font-black text-white uppercase leading-[1.15] tracking-tight">
-            Les 3 choses à faire dès <br />
-            maintenant pour perdre du <br />
-            poids durablement et pour <br />
-            obtenir un corps athlétique
-          </h1>
-          
-          <p className="mt-4 text-base md:text-lg text-gray-400 font-medium">
-            (avec tes premiers résultats visibles en 3 semaines seulement) !
-          </p>
-          
-          <p className="mt-12 text-white/80 text-base md:text-lg leading-relaxed max-w-xl">
-            Sans sacrifier ce que tu aimes manger, sans faire des heures de sport et surtout... sans reprise de poids après !
-          </p>
+        <div className="w-full max-w-2xl lg:max-w-3xl xl:max-w-4xl">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-[54px] font-black text-white uppercase leading-[1.15] tracking-tight">
+                Les 3 choses à faire dès <br className="hidden sm:block" />
+                maintenant pour perdre du <br className="hidden sm:block" />
+                poids durablement et pour <br className="hidden sm:block" />
+                obtenir un corps athlétique
+            </h1>
+
+            <p className="mt-3 sm:mt-4 text-sm sm:text-base md:text-lg text-gray-400 font-medium">
+                (avec tes premiers résultats visibles en 3 semaines seulement) !
+            </p>
+
+            <p className="mt-8 sm:mt-10 md:mt-12 text-white/80 text-sm sm:text-base md:text-lg leading-relaxed max-w-xl">
+                Sans sacrifier ce que tu aimes manger, sans faire des heures de sport et surtout... sans reprise de poids après !
+            </p>
         </div>
 
 
         {/* --- CERCLE "LEARN MORE" (Milieu bas) --- */}
-        <div className="relative mt-24 md:mt-32 flex justify-center items-center w-full">
-          {/* Utilisation d'un petit SVG pour le cercle de texte exact */}
-          <div className="relative w-[120px] h-[120px] md:w-[140px] md:h-[140px]">
-            <svg className="w-full h-full animate-spin-slow" viewBox="0 0 100 100">
-              {/* Trait du cercle */}
-              <circle cx="50" cy="50" r="45" stroke="white" strokeWidth="0.5" fill="none" />
-              
-              {/* Chemin caché pour le texte */}
-              <path id="textCirclePath" d="M 5,50 A 45,45 0 1,1 95,50 A 45,45 0 1,1 5,50" fill="none" />
-              
-              {/* Le texte suit le cercle */}
-              <text className="text-[8px] md:text-[10px] fill-white font-medium tracking-widest uppercase">
-                <textPath href="#textCirclePath" startOffset="15%">
-                  LEARN MORE • LEARN MORE • LEARN MORE • 
-                </textPath>
-              </text>
-            </svg>
-            
-            {/* Flèche centrale vers le bas */}
-            <div className="absolute inset-0 flex items-center justify-center pb-1">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <line x1="12" y1="5" x2="12" y2="19"></line>
-                <polyline points="19 12 12 19 5 12"></polyline>
-              </svg>
+        <div className="relative mt-16 sm:mt-20 md:mt-24 lg:mt-32 flex justify-center items-center w-full">
+            <div className="relative w-[90px] h-[90px] sm:w-[100px] sm:h-[100px] md:w-[120px] md:h-[120px] lg:w-[140px] lg:h-[140px]">
+                <svg className="w-full h-full animate-spin-slow" viewBox="0 0 100 100">
+                    {/* Trait du cercle */}
+                    <circle cx="50" cy="50" r="45" stroke="white" strokeWidth="0.5" fill="none" />
+
+                    {/* Chemin caché pour le texte */}
+                    <path id="textCirclePath" d="M 5,50 A 45,45 0 1,1 95,50 A 45,45 0 1,1 5,50" fill="none" />
+
+                    {/* Le texte suit le cercle */}
+                    <text className="text-[6px] sm:text-[7px] md:text-[8px] lg:text-[10px] fill-white font-medium tracking-widest uppercase">
+                        <textPath href="#textCirclePath" startOffset="15%">
+                            LEARN MORE • LEARN MORE • LEARN MORE •
+                        </textPath>
+                    </text>
+                </svg>
+
+                {/* Flèche centrale vers le bas */}
+                <div className="absolute inset-0 flex items-center justify-center pb-0.5 sm:pb-1">
+                    <svg
+                        width="18"
+                        height="18"
+                        className="sm:w-[20px] sm:h-[20px] md:w-[22px] md:h-[22px] lg:w-[24px] lg:h-[24px]"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="white"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                    >
+                        <line x1="12" y1="5" x2="12" y2="19" />
+                        <polyline points="19 12 12 19 5 12" />
+                    </svg>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
+    </div>
 
 
-      {/* --- RANGÉE DE LOGOS (Bas de section) --- */}
-      <div className="relative z-10 mt-16 md:mt-20 flex flex-wrap justify-center md:justify-between items-center gap-8 md:gap-12 max-w-5xl mx-auto w-full">
-        
+    {/* --- RANGÉE DE LOGOS (Bas de section) --- */}
+    <div className="relative z-10 mt-12 sm:mt-14 md:mt-16 lg:mt-20 flex flex-wrap justify-center items-center gap-6 sm:gap-8 md:gap-10 lg:gap-12 max-w-5xl mx-auto w-full px-2">
+
         {/* Logo 1 : Porctime */}
-        <div className="flex items-center gap-1 text-gray-500 text-xl md:text-2xl font-medium tracking-wide">
-          <span className="flex gap-0.5">
-            <span className="w-1.5 h-1.5 bg-gray-500 rounded-full"></span>
-            <span className="w-1.5 h-1.5 bg-gray-500 rounded-full"></span>
-            <span className="w-1.5 h-1.5 bg-gray-500 rounded-full"></span>
-          </span>
-          Porctime
+        <div className="flex items-center gap-1 text-gray-500 text-base sm:text-lg md:text-xl lg:text-2xl font-medium tracking-wide">
+            <span className="flex gap-0.5">
+                <span className="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-gray-500 rounded-full"></span>
+                <span className="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-gray-500 rounded-full"></span>
+                <span className="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-gray-500 rounded-full"></span>
+            </span>
+            Porctime
         </div>
 
         {/* Logo 2 : TRE-KING */}
-        <div className="text-gray-500 text-xl md:text-2xl font-black tracking-widest uppercase">
-          TRE-KING
+        <div className="text-gray-500 text-base sm:text-lg md:text-xl lg:text-2xl font-black tracking-widest uppercase">
+            TRE-KING
         </div>
 
         {/* Logo 3 : HDK (en rouge avec style dessiné) */}
-        <div className="text-[#e03c4f] text-2xl md:text-4xl font-extrabold italic transform -rotate-3">
-          HDK
+        <div className="text-[#e03c4f] text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold italic transform -rotate-3">
+            HDK
         </div>
 
         {/* Logo 4 : Laces */}
-        <div className="text-gray-500 text-2xl md:text-3xl italic font-serif tracking-wide">
-          Laces
+        <div className="text-gray-500 text-xl sm:text-2xl md:text-2xl lg:text-3xl italic font-serif tracking-wide">
+            Laces
         </div>
 
         {/* Logo 5 : Kraken */}
-        <div className="text-gray-500 text-xl md:text-2xl font-black uppercase">
-          Kraken
+        <div className="text-gray-500 text-base sm:text-lg md:text-xl lg:text-2xl font-black uppercase">
+            Kraken
         </div>
 
-      </div>
+    </div>
 
-    </section>
+</section>
 
      
       <section className="bg-white py-20 px-6 md:px-20 relative min-h-[70vh] flex items-center overflow-hidden">
@@ -175,25 +194,39 @@ export default function App() {
           <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-[#ef4444]"></div>
           <div className="absolute right-0 top-0 bottom-0 w-1.5 bg-[#ef4444]"></div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl w-full z-10">
-  {/* Card 1 */}
-  <div className="relative bg-[#e5e5e5] pt-16 pb-8 px-6 flex flex-col items-center text-center rounded-sm">
-     <div className="absolute -top-10 w-20 h-20 bg-[#de3c4d] rounded-full " />
-     <p className="text-sm text-gray-800 mb-8 leading-relaxed">La technique facile pour...</p>
-     <h3 className="text-2xl font-extrabold text-gray-500 uppercase mt-auto">SECRET #1</h3>
-  </div>
-  {/* Card 2 */}
-  <div className="relative bg-[#de3c4d] pt-16 pb-8 px-6 flex flex-col items-center text-center rounded-sm">
-     <div className="absolute -top-10 w-20 h-20 bg-[#de3c4d] rounded-full" />
-     <p className="text-sm text-white mb-8 leading-relaxed">Ce qu'il faut changer dans ton...</p>
-     <h3 className="text-2xl font-extrabold text-gray-500 uppercase mt-auto">SECRET #2</h3>
-  </div>
-  {/* Card 3 */}
-  <div className="relative bg-[#e5e5e5] pt-16 pb-8 px-6 flex flex-col items-center text-center rounded-sm">
-     <div className="absolute -top-10 w-20 h-20 bg-[#de3c4d] rounded-full" />
-     <p className="text-sm text-gray-800 mb-8 leading-relaxed">Apprends à construire ton...</p>
-     <h3 className="text-2xl font-extrabold text-gray-500 uppercase mt-auto">SECRET #3</h3>
-  </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-8 max-w-5xl w-full z-10 mx-auto px-4 sm:px-6">
+    {/* Card 1 */}
+    <div className="relative bg-[#e5e5e5] pt-12 sm:pt-14 md:pt-16 pb-6 sm:pb-7 md:pb-8 px-4 sm:px-5 md:px-6 flex flex-col items-center text-center rounded-sm min-h-[200px] sm:min-h-[220px] md:min-h-[240px]">
+        <div className="absolute -top-8 sm:-top-9 md:-top-10 w-16 sm:w-[72px] md:w-20 h-16 sm:h-[72px] md:h-20 bg-[#de3c4d] rounded-full shadow-lg" />
+        <p className="text-xs sm:text-sm md:text-sm text-gray-800 mb-6 sm:mb-7 md:mb-8 leading-relaxed max-w-[180px] sm:max-w-[200px] md:max-w-none">
+            La technique facile pour...
+        </p>
+        <h3 className="text-xl sm:text-2xl md:text-2xl font-extrabold text-gray-500 uppercase mt-auto tracking-wide">
+            SECRET #1
+        </h3>
+    </div>
+
+    {/* Card 2 */}
+    <div className="relative bg-[#de3c4d] pt-12 sm:pt-14 md:pt-16 pb-6 sm:pb-7 md:pb-8 px-4 sm:px-5 md:px-6 flex flex-col items-center text-center rounded-sm min-h-[200px] sm:min-h-[220px] md:min-h-[240px]">
+        <div className="absolute -top-8 sm:-top-9 md:-top-10 w-16 sm:w-[72px] md:w-20 h-16 sm:h-[72px] md:h-20 bg-[#de3c4d] rounded-full shadow-lg" />
+        <p className="text-xs sm:text-sm md:text-sm text-white mb-6 sm:mb-7 md:mb-8 leading-relaxed max-w-[180px] sm:max-w-[200px] md:max-w-none">
+            Ce qu'il faut changer dans ton...
+        </p>
+        <h3 className="text-xl sm:text-2xl md:text-2xl font-extrabold text-white uppercase mt-auto tracking-wide">
+            SECRET #2
+        </h3>
+    </div>
+
+    {/* Card 3 */}
+    <div className="relative bg-[#e5e5e5] pt-12 sm:pt-14 md:pt-16 pb-6 sm:pb-7 md:pb-8 px-4 sm:px-5 md:px-6 flex flex-col items-center text-center rounded-sm min-h-[200px] sm:min-h-[220px] md:min-h-[240px] sm:col-span-2 lg:col-span-1">
+        <div className="absolute -top-8 sm:-top-9 md:-top-10 w-16 sm:w-[72px] md:w-20 h-16 sm:h-[72px] md:h-20 bg-[#de3c4d] rounded-full shadow-lg" />
+        <p className="text-xs sm:text-sm md:text-sm text-gray-800 mb-6 sm:mb-7 md:mb-8 leading-relaxed max-w-[180px] sm:max-w-[200px] md:max-w-none">
+            Apprends à construire ton...
+        </p>
+        <h3 className="text-xl sm:text-2xl md:text-2xl font-extrabold text-gray-500 uppercase mt-auto tracking-wide">
+            SECRET #3
+        </h3>
+    </div>
 </div>
         </div>
 
